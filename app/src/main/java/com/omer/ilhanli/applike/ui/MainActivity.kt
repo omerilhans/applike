@@ -1,11 +1,13 @@
-package com.omer.ilhanli.applike
+package com.omer.ilhanli.applike.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.omer.ilhanli.applike.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        ActivityMainBinding.inflate(layoutInflater).run { setContentView(root) }
     }
 }
