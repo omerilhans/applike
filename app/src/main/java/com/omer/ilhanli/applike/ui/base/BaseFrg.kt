@@ -27,5 +27,4 @@ open class BaseFrg<B : ViewDataBinding>(@LayoutRes val layoutResId: Int) : Fragm
             }
     }
 
-
 }

@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.omer.ilhanli.applike.ui.detail.SatelliteDetailViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,7 +20,7 @@
             android:id="@+id/detail_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="@{viewModel.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +43,7 @@
                 style="@style/TextView.Large.With.Bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{viewModel.satellite.name}"
                 tools:text="@string/tools_item_satellite_name" />
 
             <TextView
@@ -44,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:text="@{viewModel.satelliteDetail.firstFlight}"
                 tools:text="@string/tools_satellite_detail_first_flight_date" />
 
             <TextView
@@ -53,6 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
                 android:gravity="center"
+                android:text="@{@string/text_height_mass(viewModel.satelliteDetail.height,viewModel.satelliteDetail.mass)}"
                 tools:text="@string/tools_satellite_detail_height_mass" />
 
             <TextView
@@ -62,6 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
+                android:text="@{@string/text_cost(viewModel.satelliteDetail.costPerLaunch)}"
                 tools:text="@string/tools_satellite_detail_cost" />
 
             <TextView
@@ -71,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:gravity="center"
+                app:format="@{viewModel.randomPosition}"
                 tools:text="@string/tools_satellite_detail_last_position" />
         </LinearLayout>
 
