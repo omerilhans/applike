@@ -7,9 +7,10 @@
 
     <fragment
         android:id="@+id/fragment_list_screen"
-        android:name="com.omer.ilhanli.applike.ui.list.FragmentSatelliteList"
+        android:name="com.omer.ilhanli.applike.ui.list.SatelliteListFragment"
         android:label="fragment_satellite_list"
         tools:layout="@layout/fragment_satellite_list">
+
         <action
             android:id="@+id/action_listScreen_to_detailScreen"
             app:destination="@id/fragment_detail_screen" />
@@ -17,10 +18,22 @@
 
     <fragment
         android:id="@+id/fragment_detail_screen"
-        android:name="com.omer.ilhanli.applike.ui.detail.FragmentSatelliteDetail"
+        android:name="com.omer.ilhanli.applike.ui.detail.SatelliteDetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_satellite_detail">
-        <!--        //-->
+
+        <argument
+            android:name="satellite"
+            android:defaultValue="@null"
+            app:argType="com.omer.ilhanli.applike.data.model.Satellite"
+            app:nullable="true" />
+
+        <argument
+            android:name="satelliteDetail"
+            android:defaultValue="@null"
+            app:argType="com.omer.ilhanli.applike.data.model.SatelliteDetail"
+            app:nullable="true" />
+
     </fragment>
 
 </navigation>

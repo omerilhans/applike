@@ -18,11 +18,8 @@
     <string name="text_state_active">Active</string>
     <string name="text_state_passive">Passive</string>
 
-
-    <!--// Detail-->
-    <string name="text_height_mass"><![CDATA[<big>Height/Mass:</big><small>%s/%s</small>]]></string>
-    <string name="text_cost"><![CDATA[<big>Cost:</big><small>%s</small>]]></string>
-    <string name="text_last_position"><![CDATA[<big>Last Position:</big><small>(%s,%s)</small>]]></string>
-
+    <string name="text_height_mass">Height/Mass:%s/%s</string>
+    <string name="text_cost">Cost:%s</string>
+    <string name="text_last_position">Last Position:(%s,%s)</string>
 
 </resources>
