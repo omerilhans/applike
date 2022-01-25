@@ -1,10 +1,11 @@
-package com.omer.ilhanli.applike.data.source
+package com.omer.ilhanli.applike.data.source.remote
 
 import android.content.Context
 import com.google.gson.reflect.TypeToken
 import com.omer.ilhanli.applike.data.model.Satellite
 import com.omer.ilhanli.applike.data.model.SatelliteDetail
 import com.omer.ilhanli.applike.data.model.SatellitePositionList
+import com.omer.ilhanli.applike.data.source.SatelliteDataSource
 import com.omer.ilhanli.applike.tool.Constant.String.KEY_DETAIL
 import com.omer.ilhanli.applike.tool.Constant.String.KEY_LIST
 import com.omer.ilhanli.applike.tool.Constant.String.KEY_POSITIONS

@@ -13,7 +13,7 @@ data class Satellite(
     val id: Int? = null,
     val active: Boolean? = null,
     val name: String? = null,
-) : BaseModel(), Parcelable {
+) : Parcelable {
 
     fun textState(): String = if (active == true) "Active" else "Passive"
 
@@ -31,13 +31,13 @@ data class SatelliteDetail(
     val firstFlight: String? = null,
     val height: Int? = null,
     val mass: Long? = null,
-) : BaseModel(), Parcelable
+) : Parcelable
 
 @Parcelize
 data class SatellitePosition(
     val id: String? = null,
     val positions: ArrayList<Position>? = null
-) : BaseModel(), Parcelable
+) : Parcelable
 
 @Parcelize
 data class SatellitePositionList(
@@ -49,5 +49,3 @@ data class Position(
     val posX: Double? = null,
     val posY: Double? = null,
 ) : Parcelable
-
-open class BaseModel

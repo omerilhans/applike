@@ -10,22 +10,22 @@ import com.omer.ilhanli.applike.di.LocalDataSource
 import com.omer.ilhanli.applike.di.RemoteDataSource
 import com.omer.ilhanli.applike.tool.Constant
 import com.omer.ilhanli.applike.tool.Constant.String.ERROR
-import com.omer.ilhanli.applike.tool.ToolPreferences.Companion.KEY_PREF_DETAIL_LIST
-import com.omer.ilhanli.applike.tool.ToolPreferences.Companion.KEY_PREF_LIST
-import com.omer.ilhanli.applike.tool.ToolPreferences.Companion.KEY_PREF_POSITION_LIST
+import com.omer.ilhanli.applike.data.source.local.SharedPreferences.Companion.KEY_PREF_DETAIL_LIST
+import com.omer.ilhanli.applike.data.source.local.SharedPreferences.Companion.KEY_PREF_LIST
+import com.omer.ilhanli.applike.data.source.local.SharedPreferences.Companion.KEY_PREF_POSITION_LIST
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
 import kotlin.collections.ArrayList
+import kotlin.coroutines.CoroutineContext
 
 @Singleton
-class SatelliteRepositoryImpl @Inject constructor(
-    @RemoteDataSource var remoteDataSource: SatelliteDataSource,
-    @LocalDataSource var localDataSource: SatelliteDataSource
-) : SatelliteRepository {
+class SatelliteRepositoryImpl @Inject constructor(@RemoteDataSource var remoteDataSource: SatelliteDataSource, @LocalDataSource var localDataSource: SatelliteDataSource) : SatelliteRepository {
 
     override fun fetchSatelliteList(): Flow<Source<ArrayList<Satellite>>> = flow {
         try {
@@ -110,8 +110,8 @@ class SatelliteRepositoryImpl @Inject constructor(
                     }
                 }.also { list ->
                     list?.list?.find { it.id?.toInt() ?: 0 == id }
-                        ?.also {
-                            emit(Source.complete(it))
+                        ?.run {
+                            emit(Source.complete(this))
                         }
                 }
 
