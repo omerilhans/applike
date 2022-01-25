@@ -1,7 +1,7 @@
 package com.omer.ilhanli.applike.di
 
-import com.omer.ilhanli.applike.data.source.LocalSatelliteDataSource
-import com.omer.ilhanli.applike.data.source.RemoteSatelliteDataSource
+import com.omer.ilhanli.applike.data.source.local.LocalSatelliteDataSource
+import com.omer.ilhanli.applike.data.source.remote.RemoteSatelliteDataSource
 import com.omer.ilhanli.applike.data.source.SatelliteDataSource
 import dagger.Binds
 import dagger.Module

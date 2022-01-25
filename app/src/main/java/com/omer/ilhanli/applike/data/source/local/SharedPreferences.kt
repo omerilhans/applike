@@ -1,4 +1,4 @@
-package com.omer.ilhanli.applike.tool
+package com.omer.ilhanli.applike.data.source.local
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -7,7 +7,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class ToolPreferences @Inject constructor(@ApplicationContext private val context: Context) {
+class SharedPreferences @Inject constructor(@ApplicationContext private val context: Context) {
 
     companion object {
         const val KEY_PREF_LIST = "satellite_list"
@@ -18,25 +18,23 @@ class ToolPreferences @Inject constructor(@ApplicationContext private val contex
     private var shaPre: SharedPreferences? =
         context.getSharedPreferences("satellite.sp", Context.MODE_PRIVATE)
 
-    // GETTERS
     fun getString(key: String): String? =
         if (shaPre?.contains(key) == true)
             shaPre?.getString(key, "")
         else
             null
 
-    fun isContain(key: String): Boolean {
-        return shaPre?.contains(key) ?: false
-    }
-
-    // SETTERS
     fun setString(key: String, value: String?) {
         val editor = shaPre?.edit()
         value.let { editor?.putString(key, value) } ?: remove(key)
         editor?.apply()
     }
 
-    // REMOVE
+    fun isContain(key: String): Boolean {
+        return shaPre?.contains(key) ?: false
+    }
+
+
     private fun remove(key: String) {
         val editor = shaPre?.edit()
         editor?.remove(key)

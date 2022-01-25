@@ -1,22 +1,19 @@
-package com.omer.ilhanli.applike.data.source
+package com.omer.ilhanli.applike.data.source.local
 
 import android.content.Context
 import com.google.gson.reflect.TypeToken
 import com.omer.ilhanli.applike.data.model.Satellite
 import com.omer.ilhanli.applike.data.model.SatelliteDetail
 import com.omer.ilhanli.applike.data.model.SatellitePositionList
+import com.omer.ilhanli.applike.data.source.SatelliteDataSource
 import com.omer.ilhanli.applike.data.source.SatelliteDataSource.Companion.gson
-import com.omer.ilhanli.applike.tool.ToolPreferences
-import com.omer.ilhanli.applike.tool.ToolPreferences.Companion.KEY_PREF_DETAIL_LIST
-import com.omer.ilhanli.applike.tool.ToolPreferences.Companion.KEY_PREF_LIST
-import com.omer.ilhanli.applike.tool.ToolPreferences.Companion.KEY_PREF_POSITION_LIST
+import com.omer.ilhanli.applike.data.source.local.SharedPreferences.Companion.KEY_PREF_DETAIL_LIST
+import com.omer.ilhanli.applike.data.source.local.SharedPreferences.Companion.KEY_PREF_LIST
+import com.omer.ilhanli.applike.data.source.local.SharedPreferences.Companion.KEY_PREF_POSITION_LIST
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class LocalSatelliteDataSource @Inject constructor(
-    @ApplicationContext val context: Context,
-    private val sharedPref: ToolPreferences
-) : SatelliteDataSource {
+class LocalSatelliteDataSource @Inject constructor(@ApplicationContext val context: Context, private val sharedPref: SharedPreferences) : SatelliteDataSource {
 
     override fun satelliteList(save: Boolean, list: ArrayList<Satellite>?): ArrayList<Satellite>? {
         if (save) {
